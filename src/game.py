@@ -2,18 +2,13 @@ import pygame
 
 from src.init import Init
 from src.Utilities.game_settings import GameSettings
+from src.generateItems.item_generator import ItemGenerator
+
+
 Init.initialise()
 
 # init objects
-
-# key bindings
-key_bindings = {
-    pygame.K_a: 'player.move(Position(-12, 0))',
-    pygame.K_d: 'player.move(Position(12, 0))',
-    pygame.K_s: 'player.move(Position(0, 12))',
-    pygame.K_w: 'player.move(Position(0, -12))'
-}
-
+generated_item = None
 
 # event control
 def event_control():
@@ -22,8 +17,9 @@ def event_control():
             pygame.quit()
             quit()
         if event.type == pygame.KEYDOWN:
-            if event.key in key_bindings:
-                eval(key_bindings[event.key])
+            if event.key == pygame.K_RETURN:
+                global generated_item
+                generated_item = ItemGenerator.generate_item()
 
 # main game loop
 while True:
@@ -33,5 +29,7 @@ while True:
     event_control()
 
     # display objects
+    if generated_item is not None:
+        generated_item.display()
 
     pygame.display.update()
