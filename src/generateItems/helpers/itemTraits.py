@@ -3,7 +3,7 @@ import random
 
 class ItemTraits:
 
-    defensive_pieces = ['helmet', 'armor', 'pauldrons', 'pants', 'boots', 'gauntlets']
+    defensive_pieces = ['helmet', 'chest armor', 'pauldrons', 'pants', 'boots', 'gauntlets']
     offensive_pieces = ['weapon']
     rarityAttributes = {
         'common' : (4, 8),
@@ -18,7 +18,7 @@ class ItemTraits:
         attack = 0
         defense = 0
         for rarity_range, attributes in cls.rarityAttributes.items():
-            if random.choice(['attack', 'defense']) == 'offense':
+            if random.choice(['attack', 'defense']) == 'attack':
                 attack += random.randint(0, attributes[1]) if piece in cls.offensive_pieces \
                     else random.randint(0, attributes[0])
             else:
@@ -26,4 +26,7 @@ class ItemTraits:
                     else random.randint(0, attributes[0])
             if rarity == rarity_range:
                 break
-        return attack, defense
+        return {
+            'attack': attack,
+            'defense': defense
+        }
