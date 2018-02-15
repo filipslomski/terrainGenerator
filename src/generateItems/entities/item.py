@@ -31,7 +31,7 @@ class Item:
     def display(self):
         Text.message_display(
             self.piece + " attack: " + str(self.traits['attack']) + " defense: " + str(self.traits['defense'])
-            ,GameSettings.SCREEN_WIDTH / 2,
+            ,GameSettings.SCREEN_WIDTH - 200,
             GameSettings.SCREEN_HEIGHT / 2,
             self.color
         )
