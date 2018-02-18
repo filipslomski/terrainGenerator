@@ -1,6 +1,7 @@
 import pygame
 import os
 from src.init import Init
+from src.Utilities.game_settings import GameSettings
 
 
 class Board:
@@ -20,10 +21,8 @@ class Board:
 
     @classmethod
     def display(cls):
-        starting_height = 10
-        starting_width = 250
-        for i in range(0,10):
+        for i in range(0, 10):
             for j in range(0, 10):
-                posx = starting_width + cls.board_piece_offset[cls.current_graphics] * i
-                posy = starting_height + cls.board_piece_offset[cls.current_graphics] * j
+                posx = GameSettings.BOARD_WIDTH + cls.board_piece_offset[cls.current_graphics] * i
+                posy = GameSettings.BOARD_HEIGHT + cls.board_piece_offset[cls.current_graphics] * j
                 Init.gameDisplay.blit(cls.board_piece_image, (posx, posy))

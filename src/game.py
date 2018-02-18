@@ -6,12 +6,14 @@ from src.context import Context
 from src.Utilities.colors import Colors
 from src.board.board import Board
 from src.events import Events
+from src.gems.gem_logic import GemLogic
 
 
 Init.initialise()
 
 # init objects
 Board.load_board_graphics()
+gem_logic = GemLogic()
 
 # main game loop
 while True:
@@ -25,5 +27,7 @@ while True:
         Context.generated_item.display()
     Context.player.display()
     Board.display()
+    gem_logic.display_gems()
+    gem_logic.check_if_gems_match()
 
     pygame.display.update()
