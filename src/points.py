@@ -1,6 +1,5 @@
 from src.Utilities.text import Text
 from src.Utilities.colors import Colors
-from src.context import Context
 import random
 
 
@@ -27,12 +26,12 @@ class Points:
         cls.defense += player.defense
 
     @classmethod
-    def display(cls):
+    def display(cls, player):
         current_text_posy = 20
         text_posx = 120
         Text.message_display(
-            "Attack: " + str(cls.attack) + " + " + str(Context.player.attack), text_posx, current_text_posy, Colors.RED, 35
+            "Attack: " + str(cls.attack) + " + " + str(player.attack), text_posx, current_text_posy, Colors.RED, 35
         )
         Text.message_display(
-            "Defense: " + str(cls.defense) + " + " + str(Context.player.defense), text_posx, current_text_posy + 35, Colors.BLUE, 35
+            "Defense: " + str(cls.defense) + " + " + str(player.defense), text_posx, current_text_posy + 35, Colors.BLUE, 35
         )

@@ -7,7 +7,6 @@ from src.Utilities.colors import Colors
 from src.board.board import Board
 from src.events import Events
 from src.points import Points
-from src.gems.gem_logic import GemLogic
 
 
 Init.initialise()
@@ -15,7 +14,6 @@ Init.initialise()
 # init objects
 Board.load_board_graphics()
 check_for_match = True
-gem_logic = GemLogic()
 
 # main game loop
 while True:
@@ -29,11 +27,11 @@ while True:
         Context.generated_item.display()
     Context.player.display()
     Board.display()
-    gem_logic.display_gems()
-    Points.display()
+    Context.gem_logic.display_gems()
+    Points.display(Context.player)
 
     pygame.display.update()
 
     if check_for_match or Context.player_interaction:
-        check_for_match = gem_logic.check_if_gems_match()
+        check_for_match = Context.gem_logic.check_if_gems_match()
         Context.player_interaction = False
