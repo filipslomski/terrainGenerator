@@ -17,6 +17,9 @@ class Events:
                     Context.generated_item = ItemGenerator.generate_item()
                 if event.key == pygame.K_r:
                     Context.player.switch_item(Context.generated_item)
+                if event.key == pygame.K_SPACE:
+                    Context.gem_logic.generate_all_gems()
+                    Context.player_interaction = True
                 #Handle graphics themes
                 if event.key == pygame.K_1:
                     Board.load_board_graphics('wooden')
