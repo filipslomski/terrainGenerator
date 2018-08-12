@@ -1,7 +1,5 @@
 import pygame
-from src.generateItems.item_generator import ItemGenerator
 from src.context import Context
-from src.board.board import Board
 
 
 class Events:
@@ -14,16 +12,4 @@ class Events:
                 quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    Context.generated_item = ItemGenerator.generate_item()
-                if event.key == pygame.K_r:
-                    Context.player.switch_item(Context.generated_item)
-                if event.key == pygame.K_SPACE:
-                    Context.gem_logic.generate_all_gems()
-                    Context.player_interaction = True
-                #Handle graphics themes
-                if event.key == pygame.K_1:
-                    Board.load_board_graphics('wooden')
-                if event.key == pygame.K_2:
-                    Board.load_board_graphics('red')
-                if event.key == pygame.K_3:
-                    Board.load_board_graphics('rainbow')
+                    pass
